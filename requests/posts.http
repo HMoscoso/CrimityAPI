@@ -1,0 +1,45 @@
+@api = http://localhost:4000/posts
+
+GET {{api}}
+
+###
+
+POST {{api}}/post
+Content-Type: application/json
+
+{
+    "fullName": "",
+    "email": "",
+    "avatar": "",
+    "description": "",
+    "distritoId": ""
+}
+
+
+###
+
+GET {{api}}/get/5
+
+
+###
+
+DELETE {{api}}/delete/3
+
+
+###
+
+GET {{api}}/count
+
+
+###
+
+PUT {{api}}/put/5
+Content-Type: application/json
+
+{
+    "fullName": "",
+    "email": "",
+    "avatar": "",
+    "description": "",
+    "distritoId": ""
+}
