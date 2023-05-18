@@ -1,0 +1,49 @@
+@api = http://localhost:4000/users
+
+GET {{api}}
+
+###
+
+POST {{api}}/post
+Content-Type: application/json
+
+{
+    "fullName": "Caterina Sandoval",
+    "email": "CatSan@gmail.com",
+    "phoneNum": "985123412",
+    "password": "catlover"
+}
+
+
+###
+
+GET {{api}}/get/id/5
+
+
+###
+
+GET {{api}}/get/CatSan@gmail.com/catlover
+
+
+###
+
+DELETE {{api}}/delete/3
+
+
+###
+
+GET {{api}}/count
+
+
+###
+
+PUT {{api}}/put/5
+Content-Type: application/json
+
+{
+    "fullName": "Barbatos",
+    "email": "Obeyme@gmail.com",
+    "phoneNum": "98733321",
+    "password": "awa123",
+    "avatar": "https://pfps.gg/assets/pfps/1184-bear.png"
+}

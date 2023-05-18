@@ -1,0 +1,43 @@
+@api = http://localhost:4000/crimes
+
+GET {{api}}
+
+###
+
+POST {{api}}/post
+Content-Type: application/json
+
+{
+    "latitude": -11.9944520,
+    "longitude": -77.0791182,
+    "ndelito": "Robo de pertenencias",
+    "descripcion": "A la hora de 12:00pm ha ocurrido un robo de celular cercano a mi casa."
+}
+
+
+###
+
+GET {{api}}/get/id/2
+
+
+###
+
+DELETE {{api}}/delete/3
+
+
+###
+
+GET {{api}}/count
+
+
+###
+
+PUT {{api}}/put/5
+Content-Type: application/json
+
+{
+    "latitude": ,
+    "longitude": ,
+    "ndelito": "",
+    "descripcion": ""
+}
