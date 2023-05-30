@@ -42,7 +42,7 @@ Content-Type: application/json
 
 {
     "fullName": "Barbatos",
-    "email": "Obeyme@gmail.com",
+    "email": "Obeyme@gmail.cm",
     "phoneNum": "98733321",
     "password": "awa123",
     "avatar": "https://pfps.gg/assets/pfps/1184-bear.png"
