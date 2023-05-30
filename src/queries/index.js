@@ -1,2 +1,2 @@
-export * from './database.js'
-export { queries } from './query.js'
+export * from './database'
+export { queries } from './query'
