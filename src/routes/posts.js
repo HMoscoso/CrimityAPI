@@ -1,5 +1,6 @@
-import { Router } from 'express'
-import { deletePostById, getPostById, getPosts, getTotalPost, postPosts, updatePostById } from '../models/Post.js';
+const Router = require('express');
+const {deletePostById, getPostById, getPosts, getTotalPost, postPosts, updatePostById} = require('./models/Post');
+
 
 const router = Router();
 import faker from 'faker'
@@ -17,4 +18,4 @@ router.delete('/posts/delete/:id', deletePostById);
 router.put('/posts/put/:id', updatePostById);
 
 
-export default router
+module.exports = router;

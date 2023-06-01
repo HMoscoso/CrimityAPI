@@ -1,8 +1,8 @@
-import { Router } from 'express'
-import { deleteUserById, getTotalUser, getUserById, getUserEmail, getUsers, postUser, updateUserById } from '../models/User.js';
+const Router = require('express');
+const {deleteUserById, getTotalUser, getUserById, getUserEmail, getUsers, postUser, updateUserById} = require('./models/User');
+
 
 const router = Router();
-import faker from 'faker'
 
 router.get('/users', getUsers);
 
@@ -19,4 +19,4 @@ router.put('/users/put/:id', updateUserById);
 router.get('/users/get/:email/:password', getUserEmail);
 
 
-export default router
+module.exports = router;
