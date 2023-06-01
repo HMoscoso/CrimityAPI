@@ -19,4 +19,4 @@ app.use(crimeRoutes);
 app.use(postRoutes);
 
 
-export default app;
+module.exports = app;
