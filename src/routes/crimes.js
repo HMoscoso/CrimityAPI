@@ -1,5 +1,5 @@
 const Router = require('express');
-const {deleteCrimeById, getTotalCrime, getCrimeById, getCrimes, postCrime, updateCrimeById} = require('./models/Crime');
+const {deleteCrimeById, getTotalCrime, getCrimeById, getCrimes, postCrime, updateCrimeById} = require('../models/Crime');
 
 
 const router = Router();

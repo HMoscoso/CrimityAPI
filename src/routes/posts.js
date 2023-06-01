@@ -1,5 +1,5 @@
 const Router = require('express');
-const {deletePostById, getPostById, getPosts, getTotalPost, postPosts, updatePostById} = require('./models/Post');
+const {deletePostById, getPostById, getPosts, getTotalPost, postPosts, updatePostById} = require('../models/Post');
 
 
 const router = Router();
