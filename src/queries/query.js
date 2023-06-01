@@ -1,4 +1,4 @@
-export const queries =  {
+module.exports = { const: queries =  {
 
     // tblUsers
 
@@ -27,4 +27,4 @@ export const queries =  {
     deleteCrime: 'DELETE FROM Crimes WHERE crimeId = @crimeId',
     getCountTotalCrimes: 'SELECT COUNT(*) FROM Crimes',
     updateCrimes: 'UPDATE Crimes SET latitude = @latitude, longitude = @longitude, ndelito = @ndelito, descripcion = @descripcion WHERE crimeId = @crimeId',
-}
+}}
