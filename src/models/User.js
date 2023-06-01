@@ -1,6 +1,7 @@
-import { getConnection, sql, queries } from '../queries/index.js';
+const { getConnection, sql, queries } = require('../queries/index');
 
-export const getUsers = async (req, res) => {
+
+module.exports = {  const: getUsers = async (req, res) => {
 
     try{
 
@@ -15,10 +16,10 @@ export const getUsers = async (req, res) => {
 
     }
 
-};
+}}
 
 
-export const postUser = async (req, res) => {
+module.exports = {  const: postUser = async (req, res) => {
     
     const { fullName, email, phoneNum, password } = req.body;
     let { avatar } = req.body;
@@ -52,9 +53,9 @@ export const postUser = async (req, res) => {
     }
 
 
-};
+}}
 
-export const getUserById = async (req, res) => {
+module.exports = {  const: getUserById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -65,9 +66,9 @@ export const getUserById = async (req, res) => {
         .query(queries.getUserId);
 
     res.send(result.recordset[0]);
-};
+}}
 
-export const getUserEmail = async (req, res) => {
+module.exports = { const: getUserEmail = async (req, res) => {
 
     const { email, password } = req.params;
 
@@ -79,10 +80,10 @@ export const getUserEmail = async (req, res) => {
         .query(queries.getUserMail);
 
     res.send({user: result.recordset[0]});
-};
+}}
 
 
-export const deleteUserById = async (req, res) => {
+module.exports = {  const: deleteUserById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -93,9 +94,9 @@ export const deleteUserById = async (req, res) => {
         .query(queries.deleteUser);
 
     res.sendStatus(204);
-};
+}}
 
-export const getTotalUser = async (req, res) => {
+module.exports = {  const: getTotalUser = async (req, res) => {
 
     const pool = await getConnection();
     const result = await pool
@@ -104,9 +105,9 @@ export const getTotalUser = async (req, res) => {
 
     res.send(result.recordset[0]);
 
-};
+}}
 
-export const updateUserById = async (req, res) => {
+module.exports = {  const: updateUserById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -129,4 +130,4 @@ export const updateUserById = async (req, res) => {
 
     res.send({ fullName, email, phoneNum, password, avatar });
 
-};
+}}

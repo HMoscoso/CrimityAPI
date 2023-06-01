@@ -1,6 +1,7 @@
-import { getConnection, sql, queries } from '../queries/index.js';
+const { getConnection, sql, queries } = require('../queries/index');
 
-export const getPosts = async (req, res) => {
+
+module.exports = {  const: getPosts = async (req, res) => {
 
     try{
 
@@ -15,10 +16,10 @@ export const getPosts = async (req, res) => {
 
     }
 
-};
+}}
 
 
-export const postPosts = async (req, res) => {
+module.exports = {  const: postPosts = async (req, res) => {
     
     const { fullName, email, avatar, description, distritoId } = req.body;
 
@@ -49,9 +50,9 @@ export const postPosts = async (req, res) => {
     }
 
 
-};
+}}
 
-export const getPostById = async (req, res) => {
+module.exports = {  const: getPostById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -62,10 +63,10 @@ export const getPostById = async (req, res) => {
         .query(queries.getPostId);
 
     res.send(result.recordset[0]);
-};
+}}
 
 
-export const deletePostById = async (req, res) => {
+module.exports = {  const: deletePostById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -76,9 +77,9 @@ export const deletePostById = async (req, res) => {
         .query(queries.deletePost);
 
     res.sendStatus(204);
-};
+}}
 
-export const getTotalPost = async (req, res) => {
+module.exports = {  const: getTotalPost = async (req, res) => {
 
     const pool = await getConnection();
     const result = await pool
@@ -87,9 +88,9 @@ export const getTotalPost = async (req, res) => {
 
     res.send(result.recordset[0]);
 
-};
+}}
 
-export const updatePostById = async (req, res) => {
+module.exports = {  const: updatePostById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -111,4 +112,4 @@ export const updatePostById = async (req, res) => {
 
     res.send({ fullName, email, avatar, description });
 
-};
+}}

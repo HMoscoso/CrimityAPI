@@ -1,6 +1,6 @@
-import { getConnection, sql, queries } from '../queries/index.js';
+const { getConnection, sql, queries } = require('../queries/index');
 
-export const getCrimes = async (req, res) => {
+module.exports = {  const: getCrimes = async (req, res) => {
 
     try{
 
@@ -15,10 +15,10 @@ export const getCrimes = async (req, res) => {
 
     }
 
-};
+}}
 
 
-export const postCrime = async (req, res) => {
+module.exports = {  const: postCrime = async (req, res) => {
     
     const { latitude, longitude, ndelito, descripcion } = req.body;
 
@@ -49,9 +49,9 @@ export const postCrime = async (req, res) => {
     }
 
 
-};
+}}
 
-export const getCrimeById = async (req, res) => {
+module.exports = {  const: getCrimeById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -62,10 +62,10 @@ export const getCrimeById = async (req, res) => {
         .query(queries.getCrimeId);
 
     res.send(result.recordset[0]);
-};
+}}
 
 
-export const deleteCrimeById = async (req, res) => {
+module.exports = {  const: deleteCrimeById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -76,9 +76,9 @@ export const deleteCrimeById = async (req, res) => {
         .query(queries.deleteCrime);
 
     res.sendStatus(204);
-};
+}}
 
-export const getTotalCrime = async (req, res) => {
+module.exports = {  const: getTotalCrime = async (req, res) => {
 
     const pool = await getConnection();
     const result = await pool
@@ -87,9 +87,9 @@ export const getTotalCrime = async (req, res) => {
 
     res.send(result.recordset[0]);
 
-};
+}}
 
-export const updateCrimeById = async (req, res) => {
+module.exports = {  const: updateCrimeById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -111,4 +111,4 @@ export const updateCrimeById = async (req, res) => {
 
     res.send({ latitude, longitude, ndelito, descripcion });
 
-};
+}}
