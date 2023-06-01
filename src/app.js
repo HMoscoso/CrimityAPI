@@ -1,11 +1,9 @@
-import express from 'express'
-import config from './config'
-import morgan from 'morgan';
-import cors from 'cors';
+const express = require('express');
+const config = require('./config');
 
-import userRoutes from './routes/users.js'
-import crimeRoutes from './routes/crimes.js'
-import postRoutes from './routes/posts.js'
+const userRoutes = require('./routes/users');
+const crimeRoutes = require('./routes/crimes');
+const postRoutes = require('./routes/posts');
 
 const app = express();
 
