@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Crimity-API'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8EB0A25A064448DBB5B65319504B7AB9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9AD0B3CB88D04D6E92C8413D807928AB }}
           package: .
