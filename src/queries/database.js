@@ -23,7 +23,7 @@ async function getConnection(){
     }
 }
 
-module.exports = getConnection();
+module.exports.getConnection = getConnection;
 module.exports = {sql};
 
 sql.connect(dbSettings)
