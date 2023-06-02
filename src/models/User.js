@@ -36,11 +36,11 @@ module.exports = {  const: postUser = async (req, res) => {
         const pool = await getConnection.getConnection()
     
         await pool.request()
-        .input("fullName", sql.VarChar, fullName)
-        .input("email", sql.VarChar, email)
-        .input("phoneNum", sql.VarChar, phoneNum)
-        .input("password", sql.VarChar, password)
-        .input("avatar", sql.VarChar, avatar)
+        .input("fullName", sql.sql.VarChar, fullName)
+        .input("email", sql.sql.VarChar, email)
+        .input("phoneNum", sql.sql.VarChar, phoneNum)
+        .input("password", sql.sql.VarChar, password)
+        .input("avatar", sql.sql.VarChar, avatar)
         .query(queries.addNewUsers);
 
         res.json({ fullName, email, phoneNum, password, avatar });
@@ -75,8 +75,8 @@ module.exports = { const: getUserEmail = async (req, res) => {
     const pool = await getConnection.getConnection();
     const result = await pool
         .request()
-        .input("email", sql.VarChar, email)
-        .input("password", sql.VarChar, password)
+        .input("email", sql.sql.VarChar, email)
+        .input("password", sql.sql.VarChar, password)
         .query(queries.getUserMail);
 
     res.send({user: result.recordset[0]});
@@ -120,12 +120,12 @@ module.exports = {  const: updateUserById = async (req, res) => {
     const pool = await getConnection.getConnection();
     const result = await pool
         .request()
-        .input("fullName", sql.VarChar, fullName)
-        .input("email", sql.VarChar, email)
-        .input("phoneNum", sql.VarChar, phoneNum)
-        .input("password", sql.VarChar, password)
-        .input("avatar", sql.VarChar, avatar)
-        .input("userId", sql.Int, id)
+        .input("fullName", sql.sql.VarChar, fullName)
+        .input("email", sql.sql.VarChar, email)
+        .input("phoneNum", sql.sql.VarChar, phoneNum)
+        .input("password", sql.sql.VarChar, password)
+        .input("avatar", sql.sql.VarChar, avatar)
+        .input("userId", sql.sql.Int, id)
         .query(queries.updateUsers);
 
     res.send({ fullName, email, phoneNum, password, avatar });
