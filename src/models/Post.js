@@ -1,6 +1,5 @@
 const { getConnection, sql, queries } = require('../queries/index');
 
-
 module.exports = {  const: getPosts = async (req, res) => {
 
     try{
