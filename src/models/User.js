@@ -1,11 +1,11 @@
-const { getConnection, sql, queries } = require('../queries/index');
-
+const { sql, queries } = require('../queries/index');
+const getConnection = require('../queries/database');
 
 module.exports = {  const: getUsers = async (req, res) => {
 
     try{
 
-        const pool = await getConnection();
+        const pool = await getConnection.getConnection();
         const result = await pool.request().query(queries.getAllUsers);
         res.json({users: result.recordset});
 
@@ -33,7 +33,7 @@ module.exports = {  const: postUser = async (req, res) => {
 
     try{
 
-        const pool = await getConnection()
+        const pool = await getConnection.getConnection()
     
         await pool.request()
         .input("fullName", sql.VarChar, fullName)
@@ -59,7 +59,7 @@ module.exports = {  const: getUserById = async (req, res) => {
 
     const { id } = req.params;
 
-    const pool = await getConnection();
+    const pool = await getConnection.getConnection();
     const result = await pool
         .request()
         .input("userId", id)
@@ -72,7 +72,7 @@ module.exports = { const: getUserEmail = async (req, res) => {
 
     const { email, password } = req.params;
 
-    const pool = await getConnection();
+    const pool = await getConnection.getConnection();
     const result = await pool
         .request()
         .input("email", sql.VarChar, email)
@@ -87,7 +87,7 @@ module.exports = {  const: deleteUserById = async (req, res) => {
 
     const { id } = req.params;
 
-    const pool = await getConnection();
+    const pool = await getConnection.getConnection();
     const result = await pool
         .request()
         .input("userId", id)
@@ -98,7 +98,7 @@ module.exports = {  const: deleteUserById = async (req, res) => {
 
 module.exports = {  const: getTotalUser = async (req, res) => {
 
-    const pool = await getConnection();
+    const pool = await getConnection.getConnection();
     const result = await pool
         .request()
         .query(queries.getCountTotalUsers);
@@ -117,7 +117,7 @@ module.exports = {  const: updateUserById = async (req, res) => {
         return res.status(400).json({msg: 'Bad Request. Please Fill all fields'})
     }
 
-    const pool = await getConnection();
+    const pool = await getConnection.getConnection();
     const result = await pool
         .request()
         .input("fullName", sql.VarChar, fullName)
