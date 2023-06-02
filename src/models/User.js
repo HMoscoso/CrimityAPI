@@ -1,5 +1,6 @@
-const { sql, queries } = require('../queries/index');
+const { queries } = require('../queries/index');
 const getConnection = require('../queries/database');
+const sql = require('../queries/database');
 
 module.exports = {  const: getUsers = async (req, res) => {
 
