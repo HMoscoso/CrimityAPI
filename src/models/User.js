@@ -7,7 +7,7 @@ const getUsers = async (req, res) => {
     try{
 
         const pool = await getConnection.getConnection();
-        const result = await pool.request().query(queries.queries.getAllUsers);
+        const result = await pool.request().query('SELECT * FROM Users');
         res.json({users: result.recordset});
 
     } catch( error) {
@@ -20,7 +20,7 @@ const getUsers = async (req, res) => {
 }
 module.exports.getUsers = getUsers;
 
-module.exports = {  const: postUser = async (req, res) => {
+const postUser = async (req, res) => {
     
     const { fullName, email, phoneNum, password } = req.body;
     let { avatar } = req.body;
@@ -54,9 +54,11 @@ module.exports = {  const: postUser = async (req, res) => {
     }
 
 
-}}
+}
 
-module.exports = {  const: getUserById = async (req, res) => {
+module.exports.postUser = postUser;
+
+const getUserById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -67,9 +69,11 @@ module.exports = {  const: getUserById = async (req, res) => {
         .query(queries.queries.getUserId);
 
     res.send(result.recordset[0]);
-}}
+}
 
-module.exports = { const: getUserEmail = async (req, res) => {
+module.exports.getUserById = getUserById;
+
+const getUserEmail = async (req, res) => {
 
     const { email, password } = req.params;
 
@@ -81,10 +85,13 @@ module.exports = { const: getUserEmail = async (req, res) => {
         .query(queries.queries.getUserMail);
 
     res.send({user: result.recordset[0]});
-}}
+}
+
+module.exports.getUserEmail = getUserEmail;
 
 
-module.exports = {  const: deleteUserById = async (req, res) => {
+
+const deleteUserById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -95,9 +102,11 @@ module.exports = {  const: deleteUserById = async (req, res) => {
         .query(queries.queries.deleteUser);
 
     res.sendStatus(204);
-}}
+}
+module.exports.deleteUserById = deleteUserById;
 
-module.exports = {  const: getTotalUser = async (req, res) => {
+
+const getTotalUser = async (req, res) => {
 
     const pool = await getConnection.getConnection();
     const result = await pool
@@ -106,9 +115,12 @@ module.exports = {  const: getTotalUser = async (req, res) => {
 
     res.send(result.recordset[0]);
 
-}}
+}
 
-module.exports = {  const: updateUserById = async (req, res) => {
+module.exports.getTotalUser = getTotalUser;
+
+
+const updateUserById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -131,4 +143,6 @@ module.exports = {  const: updateUserById = async (req, res) => {
 
     res.send({ fullName, email, phoneNum, password, avatar });
 
-}}
+}
+
+module.exports.updateUserById = updateUserById;
