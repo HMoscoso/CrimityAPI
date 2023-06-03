@@ -1,6 +1,8 @@
-const { getConnection, sql, queries } = require('../queries/index');
+const queries = require('../queries/query');
+const getConnection = require('../queries/database');
+const sql = require('../queries/database');
 
-module.exports = {  const: getCrimes = async (req, res) => {
+const getCrimes = async (req, res) => {
 
     try{
 
@@ -15,10 +17,11 @@ module.exports = {  const: getCrimes = async (req, res) => {
 
     }
 
-}}
+}
+module.exports.getCrimes = getCrimes;
 
 
-module.exports = {  const: postCrime = async (req, res) => {
+const postCrime = async (req, res) => {
     
     const { latitude, longitude, ndelito, descripcion } = req.body;
 
@@ -49,9 +52,11 @@ module.exports = {  const: postCrime = async (req, res) => {
     }
 
 
-}}
+}
 
-module.exports = {  const: getCrimeById = async (req, res) => {
+module.exports.postCrime = postCrime;
+
+const getCrimeById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -62,10 +67,11 @@ module.exports = {  const: getCrimeById = async (req, res) => {
         .query(queries.getCrimeId);
 
     res.send(result.recordset[0]);
-}}
+}
+module.exports.getCrimeById = getCrimeById;
 
 
-module.exports = {  const: deleteCrimeById = async (req, res) => {
+const deleteCrimeById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -76,9 +82,10 @@ module.exports = {  const: deleteCrimeById = async (req, res) => {
         .query(queries.deleteCrime);
 
     res.sendStatus(204);
-}}
+}
+module.exports.deleteCrimeById = deleteCrimeById;
 
-module.exports = {  const: getTotalCrime = async (req, res) => {
+const getTotalCrime = async (req, res) => {
 
     const pool = await getConnection();
     const result = await pool
@@ -87,9 +94,10 @@ module.exports = {  const: getTotalCrime = async (req, res) => {
 
     res.send(result.recordset[0]);
 
-}}
+}
+module.exports.getTotalCrime = getTotalCrime;
 
-module.exports = {  const: updateCrimeById = async (req, res) => {
+const updateCrimeById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -111,4 +119,5 @@ module.exports = {  const: updateCrimeById = async (req, res) => {
 
     res.send({ latitude, longitude, ndelito, descripcion });
 
-}}
+}
+module.exports.updateCrimeById = updateCrimeById;

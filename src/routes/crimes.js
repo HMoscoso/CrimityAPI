@@ -1,10 +1,11 @@
 const Router = require('express');
-const {deleteCrimeById, getTotalCrime, getCrimeById, getCrimes, postCrime, updateCrimeById} = require('../models/Crime');
+const getCrimes = require('../models/Crime');
+const {deleteCrimeById, getTotalCrime, getCrimeById, postCrime, updateCrimeById} = require('../models/Crime');
 
 
 const router = Router();
 
-router.get('/crimes', getCrimes);
+router.get('/crimes', getCrimes.getCrimes);
 
 router.post('/crimes/post', postCrime);
 
