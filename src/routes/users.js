@@ -1,10 +1,11 @@
 const Router = require('express');
-const {deleteUserById, getTotalUser, getUserById, getUserEmail, getUsers, postUser, updateUserById} = require('../models/User');
+const getUsers = require('../models/User');
+const {deleteUserById, getTotalUser, getUserById, getUserEmail, postUser, updateUserById} = require('../models/User');
 
 
 const router = Router();
 
-router.get('/users', getUsers);
+router.get('/users', getUsers.getUsers);
 
 router.post('/users/post', postUser);
 
