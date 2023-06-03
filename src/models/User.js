@@ -2,7 +2,7 @@ const queries = require('../queries/query');
 const getConnection = require('../queries/database');
 const sql = require('../queries/database');
 
-module.exports.getUsers = {  const: getUsers = async (req, res) => {
+const getUsers = async (req, res) => {
 
     try{
 
@@ -17,8 +17,8 @@ module.exports.getUsers = {  const: getUsers = async (req, res) => {
 
     }
 
-}}
-
+}
+module.exports.getUsers = getUsers;
 
 module.exports = {  const: postUser = async (req, res) => {
     
