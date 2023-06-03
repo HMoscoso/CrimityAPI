@@ -5,7 +5,7 @@ module.exports = {  const: getCrimes = async (req, res) => {
     try{
 
         const pool = await getConnection();
-        const result = await pool.request().query(queries.getAllCrimes);
+        const result = await pool.request().query('SELECT * FROM Crimes');
         res.json({crimes: result.recordset});
 
     } catch( error) {
