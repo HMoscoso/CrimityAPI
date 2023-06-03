@@ -3,7 +3,6 @@ const {deleteCrimeById, getTotalCrime, getCrimeById, getCrimes, postCrime, updat
 
 
 const router = Router();
-import faker from 'faker'
 
 router.get('/crimes', getCrimes);
 

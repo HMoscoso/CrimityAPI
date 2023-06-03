@@ -3,7 +3,6 @@ const {deletePostById, getPostById, getPosts, getTotalPost, postPosts, updatePos
 
 
 const router = Router();
-import faker from 'faker'
 
 router.get('/posts', getPosts);
 
