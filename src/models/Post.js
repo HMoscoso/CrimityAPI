@@ -1,11 +1,13 @@
-const { getConnection, sql, queries } = require('../queries/index');
+const queries = require('../queries/query');
+const getConnection = require('../queries/database');
+const sql = require('../queries/database');
 
-module.exports = {  const: getPosts = async (req, res) => {
+const getPosts = async (req, res) => {
 
     try{
 
         const pool = await getConnection();
-        const result = await pool.request().query(queries.getAllPosts);
+        const result = await pool.request().query('SELECT * FROM Posts');
         res.json({posts: result.recordset});
 
     } catch( error) {
@@ -15,10 +17,11 @@ module.exports = {  const: getPosts = async (req, res) => {
 
     }
 
-}}
+}
+module.exports.getPosts = getPosts;
 
 
-module.exports = {  const: postPosts = async (req, res) => {
+const postPosts = async (req, res) => {
     
     const { fullName, email, avatar, description, distritoId } = req.body;
 
@@ -49,9 +52,11 @@ module.exports = {  const: postPosts = async (req, res) => {
     }
 
 
-}}
+}
+module.exports.postPosts = postPosts;
 
-module.exports = {  const: getPostById = async (req, res) => {
+
+const getPostById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -62,10 +67,11 @@ module.exports = {  const: getPostById = async (req, res) => {
         .query(queries.getPostId);
 
     res.send(result.recordset[0]);
-}}
+}
+module.exports.getPostById = getPostById;
 
 
-module.exports = {  const: deletePostById = async (req, res) => {
+const deletePostById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -76,9 +82,11 @@ module.exports = {  const: deletePostById = async (req, res) => {
         .query(queries.deletePost);
 
     res.sendStatus(204);
-}}
+}
+module.exports.deletePostById = deletePostById;
 
-module.exports = {  const: getTotalPost = async (req, res) => {
+
+const getTotalPost = async (req, res) => {
 
     const pool = await getConnection();
     const result = await pool
@@ -87,9 +95,11 @@ module.exports = {  const: getTotalPost = async (req, res) => {
 
     res.send(result.recordset[0]);
 
-}}
+}
+module.exports.getTotalPost = getTotalPost;
 
-module.exports = {  const: updatePostById = async (req, res) => {
+
+const updatePostById = async (req, res) => {
 
     const { id } = req.params;
 
@@ -111,4 +121,5 @@ module.exports = {  const: updatePostById = async (req, res) => {
 
     res.send({ fullName, email, avatar, description });
 
-}}
+}
+module.exports.updatePostById = updatePostById;
