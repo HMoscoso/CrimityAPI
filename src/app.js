@@ -14,7 +14,7 @@ app.set('port', config.port)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(userRoutes);
+app.use(userRoutes.router);
 app.use(crimeRoutes);
 app.use(postRoutes);
 

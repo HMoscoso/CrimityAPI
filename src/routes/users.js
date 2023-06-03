@@ -20,4 +20,4 @@ router.put('/users/put/:id', updateUserById);
 router.get('/users/get/:email/:password', getUserEmail);
 
 
-module.exports = router;
+module.exports.router = router;
