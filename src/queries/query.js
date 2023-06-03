@@ -1,4 +1,4 @@
-module.exports = { const: queries =  {
+module.exports.queries = { const: queries =  {
 
     // tblUsers
 

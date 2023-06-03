@@ -1,4 +1,4 @@
-const { queries } = require('../queries/index');
+const queries = require('../queries/query');
 const getConnection = require('../queries/database');
 const sql = require('../queries/database');
 
@@ -7,7 +7,7 @@ module.exports = {  const: getUsers = async (req, res) => {
     try{
 
         const pool = await getConnection.getConnection();
-        const result = await pool.request().query(queries.getAllUsers);
+        const result = await pool.request().query(queries.queries.getAllUsers);
         res.json({users: result.recordset});
 
     } catch( error) {
@@ -42,7 +42,7 @@ module.exports = {  const: postUser = async (req, res) => {
         .input("phoneNum", sql.sql.VarChar, phoneNum)
         .input("password", sql.sql.VarChar, password)
         .input("avatar", sql.sql.VarChar, avatar)
-        .query(queries.addNewUsers);
+        .query(queries.queries.addNewUsers);
 
         res.json({ fullName, email, phoneNum, password, avatar });
 
@@ -64,7 +64,7 @@ module.exports = {  const: getUserById = async (req, res) => {
     const result = await pool
         .request()
         .input("userId", id)
-        .query(queries.getUserId);
+        .query(queries.queries.getUserId);
 
     res.send(result.recordset[0]);
 }}
@@ -78,7 +78,7 @@ module.exports = { const: getUserEmail = async (req, res) => {
         .request()
         .input("email", sql.sql.VarChar, email)
         .input("password", sql.sql.VarChar, password)
-        .query(queries.getUserMail);
+        .query(queries.queries.getUserMail);
 
     res.send({user: result.recordset[0]});
 }}
@@ -92,7 +92,7 @@ module.exports = {  const: deleteUserById = async (req, res) => {
     const result = await pool
         .request()
         .input("userId", id)
-        .query(queries.deleteUser);
+        .query(queries.queries.deleteUser);
 
     res.sendStatus(204);
 }}
@@ -102,7 +102,7 @@ module.exports = {  const: getTotalUser = async (req, res) => {
     const pool = await getConnection.getConnection();
     const result = await pool
         .request()
-        .query(queries.getCountTotalUsers);
+        .query(queries.queries.getCountTotalUsers);
 
     res.send(result.recordset[0]);
 
@@ -127,7 +127,7 @@ module.exports = {  const: updateUserById = async (req, res) => {
         .input("password", sql.sql.VarChar, password)
         .input("avatar", sql.sql.VarChar, avatar)
         .input("userId", sql.sql.Int, id)
-        .query(queries.updateUsers);
+        .query(queries.queries.updateUsers);
 
     res.send({ fullName, email, phoneNum, password, avatar });
 
