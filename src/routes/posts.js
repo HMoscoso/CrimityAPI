@@ -1,6 +1,6 @@
 const Router = require('express');
 const getPosts = require('../models/Post');
-const {deletePostById, getPostById, getPosts, getTotalPost, postPosts, updatePostById} = require('../models/Post');
+const {deletePostById, getPostById, getTotalPost, postPosts, updatePostById} = require('../models/Post');
 
 
 const router = Router();
