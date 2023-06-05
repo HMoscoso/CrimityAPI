@@ -26,4 +26,4 @@ async function getConnection(){
 module.exports.getConnection = getConnection;
 module.exports.sql = sql;
 
-sql.ConnectionPool(dbSettings)
+sql.connect(dbSettings)
