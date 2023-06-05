@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Crimityapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FA71255A57E5458FB54013D570833224 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D742B1073FC44E4EB49F2FC0B1DA15D7 }}
           package: .
