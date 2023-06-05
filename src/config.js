@@ -2,7 +2,7 @@ const config = require('dotenv');
 
 config.config();
 
-console.log(process.env.PORT + process.env.DB_USER + process.env.DB_PASSWORD)
+console.log(process.env.PORT + " periot "+ process.env.DB_USER + process.env.DB_PASSWORD)
 
 module.exports = {  
     port: process.env.PORT || 4000,
