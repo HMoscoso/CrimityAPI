@@ -1,4 +1,4 @@
-const queries = require('../queries/query');
+
 const getConnection = require('../queries/database');
 const sql = require('../queries/database');
 
@@ -40,7 +40,7 @@ const postCrime = async (req, res) => {
         .input("longitude", sql.Float, longitude)
         .input("ndelito", sql.VarChar, ndelito)
         .input("descripcion", sql.VarChar, descripcion)
-        .query(queries.addNewCrimes);
+        .query('INSERT INTO Crimes (latitude, longitude, ndelito, descripcion) VALUES (@latitude, @longitude, @ndelito, @descripcion)');
 
         res.json({ latitude, longitude, ndelito, descripcion });
 
@@ -64,7 +64,7 @@ const getCrimeById = async (req, res) => {
     const result = await pool
         .request()
         .input("crimeId", id)
-        .query(queries.getCrimeId);
+        .query('SELECT * FROM Crimes WHERE crimeId = @crimeId');
 
     res.send(result.recordset[0]);
 }
@@ -79,7 +79,7 @@ const deleteCrimeById = async (req, res) => {
     const result = await pool
         .request()
         .input("crimeId", id)
-        .query(queries.deleteCrime);
+        .query('DELETE FROM Crimes WHERE crimeId = @crimeId');
 
     res.sendStatus(204);
 }
@@ -90,7 +90,7 @@ const getTotalCrime = async (req, res) => {
     const pool = await getConnection();
     const result = await pool
         .request()
-        .query(queries.getCountTotalCrimes);
+        .query('SELECT COUNT(*) FROM Crimes');
 
     res.send(result.recordset[0]);
 
@@ -115,7 +115,7 @@ const updateCrimeById = async (req, res) => {
         .input("ndelito", sql.VarChar, ndelito)
         .input("descripcion", sql.VarChar, descripcion)
         .input("crimeId", sql.Int, id)
-        .query(queries.updateCrimes);
+        .query('UPDATE Crimes SET latitude = @latitude, longitude = @longitude, ndelito = @ndelito, descripcion = @descripcion WHERE crimeId = @crimeId');
 
     res.send({ latitude, longitude, ndelito, descripcion });
 

@@ -40,7 +40,7 @@ const postPosts = async (req, res) => {
         .input("avatar", sql.VarChar, phoneNum)
         .input("description", sql.VarChar, password)
         .input("distritoId", sql.Int, avatar)
-        .query(queries.addNewPosts);
+        .query('INSERT INTO Posts (fullName, email, avatar, description, distritoId) VALUES (@fullName, @email, @avatar, @description, @distritoId)');
 
         res.json({ fullName, email, avatar, description, distritoId });
 
@@ -64,7 +64,7 @@ const getPostById = async (req, res) => {
     const result = await pool
         .request()
         .input("postId", id)
-        .query(queries.getPostId);
+        .query('SELECT * FROM Posts WHERE postId = @postId');
 
     res.send(result.recordset[0]);
 }
@@ -79,7 +79,7 @@ const deletePostById = async (req, res) => {
     const result = await pool
         .request()
         .input("postId", id)
-        .query(queries.deletePost);
+        .query('DELETE FROM Posts WHERE postId = @postId');
 
     res.sendStatus(204);
 }
@@ -91,7 +91,7 @@ const getTotalPost = async (req, res) => {
     const pool = await getConnection();
     const result = await pool
         .request()
-        .query(queries.getCountTotalPosts);
+        .query('SELECT COUNT(*) FROM Posts');
 
     res.send(result.recordset[0]);
 
@@ -117,7 +117,7 @@ const updatePostById = async (req, res) => {
         .input("email", sql.VarChar, email)
         .input("avatar", sql.VarChar, avatar)
         .input("description", sql.VarChar, description)
-        .query(queries.updatePosts);
+        .query('UPDATE Posts SET fullName = @fullName, email = @email, avatar = @avatar, description = @description WHERE postId = @postId');
 
     res.send({ fullName, email, avatar, description });
 
