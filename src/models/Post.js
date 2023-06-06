@@ -1,4 +1,4 @@
-const queries = require('../queries/query');
+
 const getConnection = require('../queries/database');
 const sql = require('../queries/database');
 
