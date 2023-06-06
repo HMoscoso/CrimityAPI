@@ -42,7 +42,7 @@ const postUser = async (req, res) => {
         .input("phoneNum", sql.sql.VarChar, phoneNum)
         .input("password", sql.sql.VarChar, password)
         .input("avatar", sql.sql.VarChar, avatar)
-        .query(queries.queries.addNewUsers);
+        .query('INSERT INTO Users (fullName, email, phoneNum, password, avatar) VALUES (@fullName, @email, @phoneNum, @password, @avatar)');
 
         res.json({ fullName, email, phoneNum, password, avatar });
 
@@ -66,7 +66,7 @@ const getUserById = async (req, res) => {
     const result = await pool
         .request()
         .input("userId", id)
-        .query(queries.queries.getUserId);
+        .query('SELECT * FROM Users WHERE userId = @userId');
 
     res.send(result.recordset[0]);
 }
@@ -82,7 +82,7 @@ const getUserEmail = async (req, res) => {
         .request()
         .input("email", sql.sql.VarChar, email)
         .input("password", sql.sql.VarChar, password)
-        .query(queries.queries.getUserMail);
+        .query('SELECT * FROM Users WHERE email = @email and password = @password');
 
     res.send({user: result.recordset[0]});
 }
@@ -99,7 +99,7 @@ const deleteUserById = async (req, res) => {
     const result = await pool
         .request()
         .input("userId", id)
-        .query(queries.queries.deleteUser);
+        .query('DELETE FROM Users WHERE userId = @userId');
 
     res.sendStatus(204);
 }
@@ -111,7 +111,7 @@ const getTotalUser = async (req, res) => {
     const pool = await getConnection.getConnection();
     const result = await pool
         .request()
-        .query(queries.queries.getCountTotalUsers);
+        .query('SELECT COUNT(*) FROM Users');
 
     res.send(result.recordset[0]);
 
@@ -139,7 +139,7 @@ const updateUserById = async (req, res) => {
         .input("password", sql.sql.VarChar, password)
         .input("avatar", sql.sql.VarChar, avatar)
         .input("userId", sql.sql.Int, id)
-        .query(queries.queries.updateUsers);
+        .query('UPDATE Users SET fullName = @fullName, email = @email, phoneNum = @phoneNum, password = @password, avatar = @avatar WHERE userId = @userId');
 
     res.send({ fullName, email, phoneNum, password, avatar });
 
