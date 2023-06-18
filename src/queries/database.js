@@ -4,7 +4,7 @@ import sql from 'mssql'
 const dbSettings = {
     user: 'hillary',
     password: 'wanchan',
-    server: 'localhost',
+    server: '54.237.180.198',
     database: 'crimity',
     options: {
         trustedConnection: true,
