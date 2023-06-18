@@ -1,9 +1,11 @@
-const express = require('express');
-const config = require('./config');
+import express from 'express'
+import config from './config.js'
+import morgan from 'morgan';
+import cors from 'cors';
 
-const userRoutes = require('./routes/users');
-const crimeRoutes = require('./routes/crimes');
-const postRoutes = require('./routes/posts');
+import userRoutes from './routes/users.js'
+import crimeRoutes from './routes/crimes.js'
+import postRoutes from './routes/posts.js'
 
 const app = express();
 
@@ -14,9 +16,9 @@ app.set('port', config.port)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(userRoutes.router);
+app.use(userRoutes);
 app.use(crimeRoutes);
 app.use(postRoutes);
 
 
-module.exports = app;
+export default app;

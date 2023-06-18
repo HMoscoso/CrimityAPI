@@ -1,6 +1,2 @@
-const awa = require('./database');
-
-
-
-module.exports = awa.sql;
-module.exports.getConnection = awa.getConnection;
+export * from './database.js'
+export { queries } from './query.js'

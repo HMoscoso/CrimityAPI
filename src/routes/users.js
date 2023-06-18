@@ -1,11 +1,10 @@
-const Router = require('express');
-const getUsers = require('../models/User');
-const {deleteUserById, getTotalUser, getUserById, getUserEmail, postUser, updateUserById} = require('../models/User');
-
+import { Router } from 'express'
+import { deleteUserById, getTotalUser, getUserById, getUserEmail, getUsers, postUser, updateUserById } from '../models/User.js';
 
 const router = Router();
+import faker from 'faker'
 
-router.get('/users', getUsers.getUsers);
+router.get('/users', getUsers);
 
 router.post('/users/post', postUser);
 
@@ -20,4 +19,4 @@ router.put('/users/put/:id', updateUserById);
 router.get('/users/get/:email/:password', getUserEmail);
 
 
-module.exports.router = router;
+export default router

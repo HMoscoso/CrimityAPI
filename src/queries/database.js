@@ -1,5 +1,4 @@
-const sql = require('mssql');
-const config = require('../config');
+import sql from 'mssql'
 
 
 const dbSettings = {
@@ -14,7 +13,7 @@ const dbSettings = {
       },
 }
 
-async function getConnection(){
+export async function getConnection(){
     try{
     const pool = await sql.connect(dbSettings)
     return pool;
@@ -23,7 +22,6 @@ async function getConnection(){
     }
 }
 
-module.exports.getConnection = getConnection;
-module.exports.sql = sql;
+export {sql};
 
 sql.connect(dbSettings)

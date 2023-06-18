@@ -1,11 +1,10 @@
-const Router = require('express');
-const getCrimes = require('../models/Crime');
-const {deleteCrimeById, getTotalCrime, getCrimeById, postCrime, updateCrimeById} = require('../models/Crime');
-
+import { Router } from 'express'
+import { deleteCrimeById, getTotalCrime, getCrimeById, getCrimes, postCrime, updateCrimeById } from '../models/Crime.js';
 
 const router = Router();
+import faker from 'faker'
 
-router.get('/crimes', getCrimes.getCrimes);
+router.get('/crimes', getCrimes);
 
 router.post('/crimes/post', postCrime);
 
@@ -18,4 +17,4 @@ router.delete('/crimes/delete/:id', deleteCrimeById);
 router.put('/crimes/put/:id', updateCrimeById);
 
 
-module.exports = router;
+export default router
