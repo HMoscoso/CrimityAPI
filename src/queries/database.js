@@ -2,10 +2,11 @@ import sql from 'mssql'
 
 
 const dbSettings = {
-    user: 'hillary',
-    password: 'wanchan',
-    server: '54.237.180.198',
-    database: 'crimity',
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    server: process.env.DB_SERVER,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
     options: {
         trustedConnection: true,
         encrypt: true,
